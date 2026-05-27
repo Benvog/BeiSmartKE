@@ -309,6 +309,37 @@
             font-size: .8rem;
         }
         .landing-footer a { color: var(--accent); text-decoration: none; }
+
+        /* ── Mobile ── */
+        @media (max-width: 768px) {
+            .landing-nav { padding: 0 1rem; }
+            .landing-nav .nav-actions .btn-ghost { display: none; }
+            .landing-nav .brand-name { font-size: .95rem; }
+
+            .hero { padding: 5.5rem 1rem 3rem; }
+            .hero h1 { font-size: clamp(1.8rem, 8vw, 2.8rem); }
+            .hero-sub { font-size: .9rem; margin-bottom: 1.8rem; }
+
+            .hero-search { flex-direction: column; gap: .6rem; max-width: 100%; }
+            .hero-search input { width: 100%; }
+            .hero-search button { width: 100%; justify-content: center; }
+
+            .site-pills { gap: 6px; justify-content: center; }
+
+            .features-grid { grid-template-columns: 1fr; gap: 1rem; }
+            .stats-strip { gap: 1.2rem; padding: 2rem 1rem; }
+            .stat-val { font-size: 1.8rem; }
+
+            .cta-section { padding: 3rem 1.2rem; }
+            .cta-section h2 { font-size: 1.5rem; }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 1.65rem; }
+            .hero-badge { font-size: .7rem; }
+            .site-pills { flex-wrap: wrap; }
+            .stats-strip { grid-template-columns: 1fr 1fr; display: grid; }
+        }
     </style>
 </head>
 <body>
