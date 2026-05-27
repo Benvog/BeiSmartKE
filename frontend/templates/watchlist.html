@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %}Watchlist & Alerts — BeiSmart KE{% endblock %}
+
+{% block content %}
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+    <div class="hero-eyebrow">✦ Price Alerts</div>
+    <h1 class="page-header-title">Watchlist &amp; Alerts</h1>
+    <p class="page-header-sub">Monitor products and get email alerts when prices drop below your target.</p>
+</div>
+
+<!-- SCHEDULER STATUS BAR -->
+<div class="status-bar">
+    <div class="status-left">
+        <div class="status-dot"></div>
+        <span class="status-label">Scheduler Running</span>
+        <span class="status-next" id="next-run-time">Loading next run…</span>
+    </div>
+    <button class="btn btn-ghost btn-sm" id="price-check-btn">⚡ Run Check Now</button>
+</div>
+
+<!-- ADD FORM -->
+<div class="form-card">
+    <h2>Add to Watchlist</h2>
+    <form id="watchlist-form">
+        <div class="form-row">
+            <div class="form-group">
+                <label>Product Name</label>
+                <input id="wl-query" class="form-input" type="text" placeholder="e.g. Samsung Galaxy A36" />
+            </div>
+            <div class="form-group">
+                <label>Alert Below (KSh)</label>
+                <input id="wl-threshold" class="form-input" type="number" value="10000" min="0" step="500" />
+            </div>
+            <div class="form-group">
+                <label>Email Address</label>
+                <input id="wl-email" class="form-input" type="email" placeholder="you@example.com" />
+            </div>
+            <div class="form-group" style="justify-content:flex-end;">
+                <label>&nbsp;</label>
+                <button type="submit" class="btn btn-primary">➕ Add to Watchlist</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- CURRENT WATCHLIST -->
+<div class="section-header">
+    <div class="section-title">Current Watchlist</div>
+</div>
+
+<div id="watchlist-wrap"></div>
+
+<!-- LOADER -->
+<div class="loader-wrap" id="check-loader">
+    <div class="loader-spinner"></div>
+    <div class="loader-text">Running price check across all watchlist items…</div>
+</div>
+
+<!-- FOOTER -->
+<div style="margin-top:48px;padding-top:24px;border-top:1px solid var(--border);text-align:center;font-size:0.75rem;color:var(--text-3);line-height:2;">
+    BeiSmart KE &copy; 2026 &nbsp;&middot;&nbsp; For educational use only &nbsp;&middot;&nbsp; Kabarak University
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    fetch("/api/status")
+        .then(r => r.json())
+        .then(data => {
+            const el = document.getElementById("next-run-time");
+            if (el) el.textContent = `Next run: ${data.next_scrape}`;
+        })
+        .catch(() => {});
+</script>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Price History — BeiSmart KE{% endblock %}
+
+{% block content %}
+
+<div class="page-header">
+    <div class="hero-eyebrow" style="background:rgba(34,211,238,0.08);border-color:rgba(34,211,238,0.2);color:var(--cyan);">✦ Price Trends</div>
+    <h1 class="page-header-title">Price History</h1>
+    <p class="page-header-sub">View how prices have changed over time for any product you have previously searched.</p>
+</div>
+
+<form id="history-form">
+    <div class="search-bar" style="max-width:720px;margin-bottom:28px;">
+        <input
+            id="history-input"
+            class="search-input"
+            type="text"
+            placeholder="e.g. Samsung Galaxy A36, iPhone 15..."
+            autocomplete="off"
+        />
+        <button type="submit" class="btn btn-primary">View History →</button>
+    </div>
+</form>
+
+<!-- LOADER -->
+<div class="loader-wrap" id="history-loader">
+    <div class="loader-spinner"></div>
+    <div class="loader-text">Loading price history…</div>
+</div>
+
+<!-- CHART AREA -->
+<div id="history-wrap" style="display:none;"></div>
+
+<!-- EMPTY STATE -->
+<div class="empty-state" id="history-empty">
+    <div class="empty-icon">📈</div>
+    <div class="empty-title">Track Price Trends</div>
+    <div class="empty-sub">
+        Enter a product name above to see how its price has changed
+        over time across all 7 stores.
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+    document.getElementById("history-form").addEventListener("submit", () => {
+        document.getElementById("history-empty").style.display = "none";
+    });
+</script>
+{% endblock %}

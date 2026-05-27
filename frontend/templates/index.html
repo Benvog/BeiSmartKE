@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+
+{% block title %}Search & Compare — BeiSmart KE{% endblock %}
+
+{% block content %}
+
+<!-- HERO -->
+<div class="hero">
+    <div class="hero-eyebrow">✦ Real-Time Price Tracker</div>
+    <h1 class="hero-title">
+        Find the Best Deals<br>
+        <span class="grad">Across Every Platform</span>
+    </h1>
+    <p class="hero-sub">
+        Compare prices across 6 Kenyan and international stores, track history,
+        and get alerts when deals drop below your target price.
+    </p>
+    <div class="site-row">
+        <div class="site-pill pill-jumia"><div class="site-pill-dot" style="background:var(--c-jumia);"></div>Jumia</div>
+        <div class="site-pill pill-avechi"><div class="site-pill-dot" style="background:var(--c-avechi);"></div>Avechi</div>
+        <div class="site-pill pill-hotpoint"><div class="site-pill-dot" style="background:var(--c-hotpoint);"></div>Hotpoint</div>
+        <div class="site-pill pill-quickmart"><div class="site-pill-dot" style="background:var(--c-quickmart);"></div>Quickmart</div>
+        <div class="site-pill pill-kilimall"><div class="site-pill-dot" style="background:var(--c-kilimall);"></div>Kilimall</div>
+        <div class="site-pill pill-amazon"><div class="site-pill-dot" style="background:var(--c-amazon);"></div>Amazon</div>
+    </div>
+</div>
+
+<!-- CATEGORY SELECTOR -->
+<div class="category-bar" id="category-bar">
+    <button class="cat-pill active" data-category="all">
+        🛍️ All
+    </button>
+    <button class="cat-pill" data-category="electronics">
+        📱 Electronics
+    </button>
+    <button class="cat-pill" data-category="appliances">
+        🏠 Appliances
+    </button>
+    <button class="cat-pill" data-category="food">
+        🛒 Food & Groceries
+    </button>
+    <button class="cat-pill" data-category="fashion">
+        👗 Fashion
+    </button>
+    <button class="cat-pill" data-category="general">
+        📦 General
+    </button>
+</div>
+<div class="category-hint" id="category-hint">
+    Searching across: <span id="category-sites">Jumia, Avechi, Hotpoint, Quickmart, Kilimall, Amazon</span>
+</div>
+
+<!-- SEARCH -->
+<form id="search-form">
+    <div class="search-wrap">
+        <div class="search-bar">
+            <input
+                id="search-input"
+                class="search-input"
+                type="text"
+                placeholder="Search products e.g. Samsung Galaxy A36, iPhone 15..."
+                autocomplete="off"
+            />
+            <button type="submit" class="btn btn-primary">Search →</button>
+        </div>
+        <div class="recent-dropdown" id="recent-dropdown"></div>
+    </div>
+</form>
+
+<!-- STATS -->
+<div class="stats-grid" id="stats-wrap" style="display:none;"></div>
+
+<!-- RESULTS -->
+<div id="results-wrap" style="display:none;">
+
+    <div class="section-header">
+        <div class="section-title">Results <span id="results-count"></span></div>
+        <div class="section-meta">sorted by: best deal first</div>
+    </div>
+
+    <!-- Filter bar -->
+    <div class="filter-bar" id="filter-sort-bar"></div>
+
+    <!-- View toggle -->
+    <div class="view-toggle">
+        <button class="toggle-btn active" id="toggle-card">🃏 Cards</button>
+        <button class="toggle-btn" id="toggle-table">📋 Table</button>
+    </div>
+
+    <!-- Cards -->
+    <div class="products-list" id="card-view"></div>
+
+    <!-- Table -->
+    <div id="table-view" style="display:none;"></div>
+
+    <!-- Watchlist quick-add -->
+    <div class="quick-add-card">
+        <h3>🔔 Add to Watchlist</h3>
+        <form id="watchlist-form">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Product</label>
+                    <input id="wl-query" class="form-input" type="text" placeholder="e.g. Samsung Galaxy A36" />
+                </div>
+                <div class="form-group">
+                    <label>Alert Below (KSh)</label>
+                    <input id="wl-threshold" class="form-input" type="number" value="10000" min="0" step="500" />
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input id="wl-email" class="form-input" type="email" placeholder="you@example.com" />
+                </div>
+                <div class="form-group" style="justify-content:flex-end;">
+                    <label>&nbsp;</label>
+                    <button type="submit" class="btn btn-primary">➕ Add</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+<!-- EMPTY STATE -->
+<div class="empty-state" id="empty-state">
+    <div class="empty-icon">🛒</div>
+    <div class="empty-title">Welcome to BeiSmart KE</div>
+    <div class="empty-sub">
+        Type a product name above and hit Search to compare prices across
+        Jumia, Avechi, Hotpoint, Quickmart, Kilimall &amp; Amazon instantly.
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.getElementById("search-form").addEventListener("submit", () => {
+        document.getElementById("empty-state").style.display = "none";
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,10 @@
+flask
+requests
+beautifulsoup4
+lxml
+fake-useragent
+tenacity
+APScheduler
+playwright
+pandas
+python-dotenv

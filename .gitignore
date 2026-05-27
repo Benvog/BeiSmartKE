@@ -1,0 +1,24 @@
+# Environment & secrets
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# Database
+beismart.db
+
+# IDE
+.idea/
+.vscode/
+
+# Temp/debug scripts
+debug_*.py
+test_*.py
+
+# Temp files
+~$*
+*.tmp
