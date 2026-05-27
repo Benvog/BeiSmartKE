@@ -168,7 +168,7 @@ def api_search_stream():
             futures = {executor.submit(run_scraper, name, s): name for name, s in scrapers.items()}
             finished = 0
             total = len(scrapers)
-            deadline = 35
+            deadline = 50
 
             import time
             start = time.time()
