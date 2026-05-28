@@ -11,11 +11,11 @@ function initThemeToggle() {
     function applyTheme(theme) {
         html.setAttribute("data-theme", theme);
         if (theme === "dark") {
-            icon.textContent  = "🌙";
-            if (label) label.textContent = "Dark";
-        } else {
             icon.textContent  = "☀️";
             if (label) label.textContent = "Light";
+        } else {
+            icon.textContent  = "🌙";
+            if (label) label.textContent = "Dark";
         }
         localStorage.setItem("beismart-theme", theme);
     }

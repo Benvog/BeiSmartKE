@@ -6,7 +6,7 @@
     <title>BeiSmart KE — Find the Best Deals in Kenya</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
     <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('beismart-theme') || 'dark');</script>
     <style>
@@ -36,9 +36,10 @@
             font-size: 1.1rem;
         }
         .landing-nav .brand-name {
-            font-family: 'Syne', sans-serif;
-            font-weight: 800; font-size: 1.1rem;
+            font-family: 'DM Serif Display', serif;
+            font-weight: 400; font-size: 1.2rem;
             color: var(--text-1);
+            letter-spacing: 0.2px;
         }
         .landing-nav .brand-name span { color: var(--accent); }
         .landing-nav .nav-actions { display: flex; gap: .75rem; align-items: center; }
@@ -111,11 +112,11 @@
             50%      { opacity: .5; transform: scale(.7); }
         }
         .hero h1 {
-            font-family: 'Syne', sans-serif;
-            font-weight: 800;
-            font-size: clamp(2.4rem, 6vw, 5rem);
-            line-height: 1.08;
-            color: var(--text-primary);
+            font-family: 'DM Serif Display', serif;
+            font-weight: 400;
+            font-size: clamp(2.6rem, 6vw, 5.2rem);
+            line-height: 1.1;
+            color: var(--text-1);
             margin: 0 0 .5rem;
         }
         .hero h1 .accent-word { color: var(--accent); }
@@ -194,8 +195,8 @@
         .site-pill:hover { opacity: 1; }
         .site-pill.jumia    { color:#f0a500; border-color:rgba(240,165,0,.35); background:rgba(240,165,0,.08); }
         .site-pill.avechi   { color:#2196F3; border-color:rgba(33,150,243,.35); background:rgba(33,150,243,.08); }
-        .site-pill.hotpoint { color:#E53935; border-color:rgba(229,57,53,.35);  background:rgba(229,57,53,.08); }
-        .site-pill.quickmart{ color:#43A047; border-color:rgba(67,160,71,.35);  background:rgba(67,160,71,.08); }
+        .site-pill.hotpoint { color:#43A047; border-color:rgba(67,160,71,.35);  background:rgba(67,160,71,.08); }
+        .site-pill.quickmart{ color:#E53935; border-color:rgba(229,57,53,.35);  background:rgba(229,57,53,.08); }
         .site-pill.kilimall { color:#8E24AA; border-color:rgba(142,36,170,.35); background:rgba(142,36,170,.08); }
         .site-pill.amazon   { color:#FF9800; border-color:rgba(255,152,0,.35);  background:rgba(255,152,0,.08); }
 
@@ -208,8 +209,8 @@
         }
         .stat-item { text-align: center; }
         .stat-item .stat-val {
-            font-family: 'Syne', sans-serif;
-            font-size: 2rem; font-weight: 800;
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.2rem; font-weight: 400;
             color: var(--accent);
         }
         .stat-item .stat-label {
@@ -226,9 +227,9 @@
         }
         .features-header { text-align: center; margin-bottom: 3rem; }
         .features-header h2 {
-            font-family: 'Syne', sans-serif;
-            font-size: clamp(1.6rem, 3vw, 2.4rem);
-            font-weight: 800; color: var(--text-primary);
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(1.8rem, 3vw, 2.6rem);
+            font-weight: 400; color: var(--text-1);
             margin: 0 0 .5rem;
         }
         .features-header p { color: var(--text-secondary); font-size: .95rem; }
@@ -257,9 +258,9 @@
             margin-bottom: 1rem;
         }
         .feature-card h3 {
-            font-family: 'Syne', sans-serif;
-            font-size: 1rem; font-weight: 700;
-            color: var(--text-primary);
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.1rem; font-weight: 400;
+            color: var(--text-1);
             margin: 0 0 .5rem;
         }
         .feature-card p {
@@ -282,9 +283,9 @@
             pointer-events: none;
         }
         .cta-section h2 {
-            font-family: 'Syne', sans-serif;
-            font-size: clamp(1.6rem, 3vw, 2.2rem);
-            font-weight: 800; color: var(--text-primary);
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(1.8rem, 3vw, 2.4rem);
+            font-weight: 400; color: var(--text-1);
             margin: 0 0 .75rem;
         }
         .cta-section p { color: var(--text-secondary); margin: 0 0 2rem; }
@@ -367,11 +368,11 @@
         <span class="grad-word">Across Every Platform</span>
     </h1>
     <p class="hero-sub">
-        Compare prices across 4 Kenyan stores in seconds.
-        Track price history, set alerts, and never overpay again.
+        Compare prices across 6 Kenyan and international stores, track history,
+        and get alerts when deals drop below your target price.
     </p>
     <form class="hero-search" action="/search" method="get" onsubmit="heroSearch(event)">
-        <input type="text" name="q" id="hero-input" placeholder="Search for a product e.g. Samsung A36..." autocomplete="off" />
+        <input type="text" name="q" id="hero-input" placeholder="Search products e.g. Samsung Galaxy A36, iPhone 15..." autocomplete="off" />
         <button type="submit">Search →</button>
     </form>
     <p class="hero-hint">Try: <a href="/search?q=laptop">laptop</a> · <a href="/search?q=cooking+oil">cooking oil</a> · <a href="/search?q=blender">blender</a></p>
@@ -381,7 +382,7 @@
         <span class="site-pill avechi">● AVECHI</span>
         <span class="site-pill hotpoint">● HOTPOINT</span>
         <span class="site-pill quickmart">● QUICKMART</span>
-        <span class="site-pill kilimall">● KILIMALI</span>
+        <span class="site-pill kilimall">● KILIMALL</span>
         <span class="site-pill amazon">● AMAZON</span>
     </div>
 </section>
@@ -463,14 +464,14 @@
         const isDark = html.getAttribute('data-theme') === 'dark';
         const next = isDark ? 'light' : 'dark';
         html.setAttribute('data-theme', next);
-        document.getElementById('theme-toggle').textContent = next === 'dark' ? '🌙 Dark' : '☀️ Light';
+        document.getElementById('theme-toggle').textContent = next === 'dark' ? '☀️ Light' : '🌙 Dark';
         localStorage.setItem('beismart-theme', next);
     }
 
     // Restore saved theme on load
     const saved = localStorage.getItem('beismart-theme') || 'dark';
     document.documentElement.setAttribute('data-theme', saved);
-    document.getElementById('theme-toggle').textContent = saved === 'dark' ? '🌙 Dark' : '☀️ Light';
+    document.getElementById('theme-toggle').textContent = saved === 'dark' ? '☀️ Light' : '🌙 Dark';
 </script>
 </body>
 </html>
