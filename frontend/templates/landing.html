@@ -313,9 +313,12 @@
 
         /* ── Mobile ── */
         @media (max-width: 768px) {
-            .landing-nav { padding: 0 1rem; }
-            .landing-nav .nav-actions .btn-ghost { display: none; }
+            .landing-nav { padding: 0 1rem; height: 54px; }
+            .landing-nav .brand-icon { width: 28px; height: 28px; font-size: .85rem; }
             .landing-nav .brand-name { font-size: .95rem; }
+            .landing-nav .btn-ghost { display: none; }
+            .landing-nav .btn-cta { display: none; }
+            .theme-toggle { padding: .35rem .75rem; font-size: .75rem; gap: .3rem; }
 
             .hero { padding: 5.5rem 1rem 3rem; }
             .hero h1 { font-size: clamp(1.8rem, 8vw, 2.8rem); }
@@ -352,7 +355,10 @@
         <div class="brand-name">BeiSmart <span>KE</span></div>
     </a>
     <div class="nav-actions">
-        <button class="btn-ghost" id="theme-toggle" onclick="toggleTheme()">☀️ Light</button>
+        <button class="theme-toggle" id="theme-toggle" title="Toggle light/dark mode">
+            <span class="toggle-icon" id="theme-icon">☀️</span>
+            <span id="theme-label">Light</span>
+        </button>
         <a href="/search" class="btn-cta">Start Searching →</a>
     </div>
 </nav>
@@ -459,19 +465,26 @@
         }
     }
 
-    function toggleTheme() {
-        const html = document.documentElement;
-        const isDark = html.getAttribute('data-theme') === 'dark';
-        const next = isDark ? 'light' : 'dark';
-        html.setAttribute('data-theme', next);
-        document.getElementById('theme-toggle').textContent = next === 'dark' ? '☀️ Light' : '🌙 Dark';
-        localStorage.setItem('beismart-theme', next);
+    function applyTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        const icon  = document.getElementById('theme-icon');
+        const label = document.getElementById('theme-label');
+        if (theme === 'dark') {
+            icon.textContent  = '☀️';
+            label.textContent = 'Light';
+        } else {
+            icon.textContent  = '🌙';
+            label.textContent = 'Dark';
+        }
+        localStorage.setItem('beismart-theme', theme);
     }
 
-    // Restore saved theme on load
-    const saved = localStorage.getItem('beismart-theme') || 'dark';
-    document.documentElement.setAttribute('data-theme', saved);
-    document.getElementById('theme-toggle').textContent = saved === 'dark' ? '☀️ Light' : '🌙 Dark';
+    document.getElementById('theme-toggle').addEventListener('click', function() {
+        const current = document.documentElement.getAttribute('data-theme');
+        applyTheme(current === 'dark' ? 'light' : 'dark');
+    });
+
+    applyTheme(localStorage.getItem('beismart-theme') || 'dark');
 </script>
 </body>
 </html>
